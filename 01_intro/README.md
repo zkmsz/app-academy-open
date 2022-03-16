@@ -1,8 +1,8 @@
 # Introduction to Programming
 
-| Start Date | End Date | Total Hours |
-| ---------- | -------- | ----------- |
-| 03/11/2020 |          | 9           |
+| Start Date | End Date   | Total Hours |
+| ---------- | ---------- | ----------- |
+| 03/11/2022 | 03/16/2022 | 19.5\*      |
 
 - Introduction `completed`
 - Numbers `completed`
@@ -16,4 +16,6 @@
 - Enumerables & Ranges `completed`
 - Nested Loops & 2D Arrays `completed`
 - Hashes `completed`
-- Advanced Problems `in progress`
+- Advanced Problems `completed`
+
+\* _I spent 84.75 hours on another platform before switching to App Academy Open which made this course a review instead of learning from zero._
