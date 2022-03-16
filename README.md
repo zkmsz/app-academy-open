@@ -2,8 +2,8 @@
 
 ## Syllabus
 
-- Intro to Programming `In Progress`
-- Software Engineering Foundations
+- Intro to Programming `Completed 3/16/2022`
+- Software Engineering Foundations `In Progress`
 - Ruby
 - SQL
 - Rails

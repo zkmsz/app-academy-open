@@ -1,10 +1,10 @@
 # Software Engineering Foundations
 
-| Start Date | End Date   | Total Hours |
-| ---------- | ---------- | ----------- |
-| mm/dd/yyyy | mm/dd/yyyy |             |
+| Start Date | End Date | Total Hours |
+| ---------- | -------- | ----------- |
+| 03/16/2022 |          |             |
 
-- Advanced Ruby
+- Advanced Ruby `In Progress`
 - Scope & References
 - RSpec
 - Debugging
