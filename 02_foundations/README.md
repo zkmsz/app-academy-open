@@ -2,9 +2,9 @@
 
 | Start Date | End Date | Total Hours |
 | ---------- | -------- | ----------- |
-| 03/16/2022 |          |             |
+| 03/17/2022 |          | 2.5         |
 
-- Advanced Ruby `In Progress`
+- Advanced Ruby `Completed`
 - Scope & References
 - RSpec
 - Debugging
