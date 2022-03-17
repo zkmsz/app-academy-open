@@ -5,6 +5,7 @@ _notes/
 _scratch/
 .prettierrc
 .rubocop.yml
+*.zip
 
 ###
 ### Ruby
