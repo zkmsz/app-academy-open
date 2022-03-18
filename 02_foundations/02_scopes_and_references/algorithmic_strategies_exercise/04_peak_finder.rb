@@ -4,13 +4,33 @@
 # and right neighbor. The first or last element of the array is considered
 # a "peak" if it is greater than it's one neighbor.
 
+# My original solution
+#
+# def peak_finder(arr)
+#   result = []
+#   result << arr[0] if arr[0] > arr[1]
+#   (1...arr.length - 1).each do |idx|
+#     result << arr[idx] if arr[idx] > arr[idx - 1] && arr[idx] > arr[idx + 1]
+#   end
+#   result << arr[-1] if arr[-1] > arr[-2]
+#   result
+# end
+
+# Refactored solution after watching solution walkthrough
 def peak_finder(arr)
   result = []
-  result << arr[0] if arr[0] > arr[1]
-  (1...arr.length - 1).each do |idx|
-    result << arr[idx] if arr[idx] > arr[idx - 1] && arr[idx] > arr[idx + 1]
+  arr.each_with_index do |num, i|
+    left = arr[i - 1]
+    right = arr[i + 1]
+
+    if i == 0 && num > right
+      result << num
+    elsif i == arr.length - 1 && num > left
+      result << num
+    elsif num > left && num > right
+      result << num
+    end
   end
-  result << arr[-1] if arr[-1] > arr[-2]
   result
 end
 
