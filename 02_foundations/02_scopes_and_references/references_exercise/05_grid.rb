@@ -2,10 +2,16 @@
 # The method should return a 2D array with n rows and m columns (this means
 # that there are n subarrays, each of length m).
 
+# Orignal Answer
+# def grid(n, m)
+#   result = []
+#   n.times { result << Array.new(m) }
+#   result
+# end
+
+# Refactored Answer
 def grid(n, m)
-  result = []
-  n.times { result << Array.new(m) }
-  result
+  Array.new(n) { Array.new(m) }
 end
 
 result1 = grid(2, 3)

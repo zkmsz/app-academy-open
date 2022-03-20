@@ -10,8 +10,15 @@
 # returned array. The exact object_ids you get back don't matter. We just
 # want the ids to be the same before and after calling your method.
 
+# Original Answer
+# def scalar_multiple!(array, multiplier)
+#   (0..array.length - 1).each { |i| array[i] *= multiplier }
+#   array
+# end
+
+# Refactored answer
 def scalar_multiple!(array, multiplier)
-  (0..array.length - 1).each { |i| array[i] *= multiplier }
+  array.map! { |i| i * multiplier }
   array
 end
 

@@ -9,15 +9,21 @@
 # The exact object_ids you get back don't matter. We just want the ids to be the
 # same before and after calling your method.
 
+# Original Answer
+# def ele_replace!(array, hash)
+#   hash.each do |k, v|
+#     idx = array.find_index(k)
+#     while !idx.nil?
+#       array[idx] = v
+#       idx = array.find_index(k)
+#     end
+#   end
+#   array
+# end
+
+# Refactored Answer
 def ele_replace!(array, hash)
-  hash.each do |k, v|
-    idx = array.find_index(k)
-    while !idx.nil?
-      array[idx] = v
-      idx = array.find_index(k)
-    end
-  end
-  array
+  array.map! { |el| hash.key?(el) ? hash[el] : el }
 end
 
 array1 = [4, 2, 0, 2]

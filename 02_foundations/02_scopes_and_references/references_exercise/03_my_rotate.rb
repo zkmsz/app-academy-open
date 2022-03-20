@@ -11,38 +11,55 @@
 # The exact object_ids you get back don't matter. We just want the ids to be
 # the same before and after calling your method.
 
-def right_rotate(array)
-  first = array[0]
-  (0...array.length).each { |idx| array[idx] = array[idx + 1] }
-  array[-1] = first
-  array
-end
+# Original Answer
+# def right_rotate(array)
+#   first = array[0]
+#   (0...array.length).each { |idx| array[idx] = array[idx + 1] }
+#   array[-1] = first
+#   array
+# end
+#
+# def left_rotate(array)
+#   last = array[-1]
+#   (array.length - 1).downto(1).each { |idx| array[idx] = array[idx - 1] }
+#   array[0] = last
+#   array
+# end
+#
+# def my_rotate!(array, amt)
+#   if amt < 0
+#     amt.abs.times { left_rotate(array) }
+#   else
+#     amt.times { right_rotate(array) }
+#   end
+#   array
+# end
 
-def left_rotate(array)
-  last = array[-1]
-  (array.length - 1).downto(1).each { |idx| array[idx] = array[idx - 1] }
-  array[0] = last
-  array
-end
-
+# Refactored Answer
 def my_rotate!(array, amt)
-  if amt < 0
-    amt.abs.times { left_rotate(array) }
-  else
-    amt.times { right_rotate(array) }
+  if amt > 0
+    amt.times do
+      first = array.shift
+      array << first
+    end
+  elsif amt < 0
+    amt.abs.times do
+      last = array.pop
+      array.unshift(last)
+    end
   end
   array
 end
 
 array1 = ["a", "b", "c", "d"]
 p array1.object_id # => 70354216023780
-p result1 = my_rotate!(array1, 2)
+result1 = my_rotate!(array1, 2)
 p result1 # => ["c", "d", "a", "b"]
 p result1.object_id # => 70354216023780
 
 array2 = ["NOMAD", "SOHO", "TRIBECA"]
 p array2.object_id # => 70354216019660
-p result2 = my_rotate!(array2, 1)
+result2 = my_rotate!(array2, 1)
 p result2 # => ["SOHO", "TRIBECA", "NOMAD"]
 p result2.object_id # => 70354216019660
 
