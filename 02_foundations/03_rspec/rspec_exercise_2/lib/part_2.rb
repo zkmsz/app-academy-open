@@ -4,16 +4,26 @@ def palindrome?(string)
   string == reversed
 end
 
+# Original Answer
+# def substrings(string)
+#   result = []
+#   i = 0
+#   while i < string.length
+#     j = 1
+#     while j <= string.length - i
+#       result << string[i, j]
+#       j += 1
+#     end
+#     i += 1
+#   end
+#   result
+# end
+
+# Refactored Answer
 def substrings(string)
   result = []
-  i = 0
-  while i < string.length
-    j = 1
-    while j <= string.length - i
-      result << string[i, j]
-      j += 1
-    end
-    i += 1
+  (0...string.length).each do |start|
+    (start...string.length).each { |length| result << string[start..length] }
   end
   result
 end
