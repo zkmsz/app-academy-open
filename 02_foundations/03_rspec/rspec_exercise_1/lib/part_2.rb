@@ -19,8 +19,7 @@ def caesar_cipher(string, num)
 
   string.each_char.with_index do |c, idx|
     if !alphabet.index(c).nil?
-      new_idx = alphabet.index(c) + num
-      new_idx -= 26 while new_idx >= 26
+      new_idx = (alphabet.index(c) + num) % 26
       new_letter = alphabet[new_idx]
       string[idx] = new_letter
     end
