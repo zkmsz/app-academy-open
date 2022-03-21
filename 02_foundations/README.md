@@ -2,12 +2,12 @@
 
 | Start Date | End Date | Total Hours |
 | ---------- | -------- | ----------- |
-| 03/17/2022 |          | 10.5        |
+| 03/17/2022 |          | 15.25       |
 
 - Advanced Ruby `Completed`
 - Scope & References `Completed`
-- RSpec `In Progress`
-- Debugging
+- RSpec `Completed`
+- Debugging `In Progress`
 - Blocks & Procs
 - Classes
 - Class Monkey Patching
