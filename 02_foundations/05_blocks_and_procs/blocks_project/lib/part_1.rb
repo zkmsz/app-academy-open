@@ -7,8 +7,7 @@ def reject_puppies(array)
 end
 
 def count_positive_subarrays(array)
-  array.select! { |subarr| subarr.sum > 0 }
-  array.count
+  array.count { |subarr| subarr.sum > 0 }
 end
 
 def aba_translate(string)

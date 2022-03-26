@@ -1,10 +1,5 @@
-def capitalized?(word)
-  capitalzied = word[0].upcase + word[1..-1].downcase
-  word == capitalzied
-end
-
 def all_words_capitalized?(array)
-  array.all? { |word| capitalized?(word) }
+  array.all? { |word| word == word.capitalize }
 end
 
 def no_valid_url?(array)
