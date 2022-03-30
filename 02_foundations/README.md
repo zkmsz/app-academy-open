@@ -2,7 +2,7 @@
 
 | Start Date | End Date | Total Hours |
 | ---------- | -------- | ----------- |
-| 03/17/2022 |          | 29          |
+| 03/17/2022 |          | 33.5        |
 
 - Advanced Ruby `Completed`
 - Scope & References `Completed`
@@ -11,8 +11,8 @@
 - Blocks & Procs `Completed`
 - Classes `Completed`
 - Class Monkey Patching `Completed`
-- Input/Output `In Progress`
-- Object Oriented Programming
+- Input/Output `Completed`
+- Object Oriented Programming `In Progress`
 - Recursion
 - Foundations Recap
 - Additional Projects
