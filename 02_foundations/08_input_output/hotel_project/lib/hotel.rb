@@ -30,10 +30,14 @@ class Hotel
   end
 
   def has_vacancy?
-    @rooms.any? { |_, v| v.capacity - v.occupants.length > 0 }
+    # @rooms.any? { |_, v| v.capacity - v.occupants.length > 0 }
+    @rooms.values.any? { |room| room.available_space > 0 }
   end
 
   def list_rooms
-    @rooms.each { |k, v| print "#{k} #{v.available_space}\n" }
+    # @rooms.each { |k, v| print "#{k} #{v.available_space}\n" }
+    @rooms.each do |room_name, room|
+      print "#{room_name} #{room.available_space}\n"
+    end
   end
 end
