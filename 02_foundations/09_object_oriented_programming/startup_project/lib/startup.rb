@@ -20,7 +20,7 @@ class Startup
 
   def hire(employee_name, title)
     @employees << Employee.new(employee_name, title) if valid_title?(title)
-    raise error if !valid_title?(title)
+    raise "title does not exist" if !valid_title?(title)
   end
 
   def size
@@ -33,7 +33,7 @@ class Startup
       employee.pay(amount)
       @funding -= amount
     else
-      raise error
+      raise "not enough funds to pay employee"
     end
   end
 
@@ -59,7 +59,9 @@ class Startup
     startup.salaries.each do |title, salary|
       @salaries[title] = salary if !@salaries[title]
     end
-    startup.employees.each { |employee| @employees << employee }
+
+    # startup.employees.each { |employee| @employees << employee }
+    @employees += startup.employees
     startup.close
   end
 end
