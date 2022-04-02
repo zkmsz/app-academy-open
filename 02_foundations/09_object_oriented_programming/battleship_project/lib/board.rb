@@ -11,15 +11,17 @@ class Board
   end
 
   def [](position)
-    @grid[position[0]][position[1]]
+    row, col = position
+    @grid[row][col]
   end
 
   def []=(position, value)
-    @grid[position[0]][position[1]] = value
+    row, col = position
+    @grid[row][col] = value
   end
 
   def num_ships
-    @grid.flatten.select { |el| el == :S }.count
+    @grid.flatten.count { |el| el == :S }
   end
 
   def attack(position)
