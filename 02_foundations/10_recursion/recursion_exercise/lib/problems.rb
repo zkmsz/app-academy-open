@@ -68,9 +68,8 @@ end
 # reverse_string("internet")    # => "tenretni"
 # reverse_string("friends")     # => "sdneirf"
 def reverse_string(str)
-  # got stuck on this one and needed to look it up
-  return str if str.length < 2
-  str[-1] + reverse_string(str[1..-2]) + str[0]
+  return "" if str.empty?
+  reverse_string(str[1..-1]) + str[0]
 end
 # A 1-dimensional array is also known as a flattened array.
 # Write a method, flatten(data), that accepts a single argument. The
