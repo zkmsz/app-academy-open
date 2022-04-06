@@ -1,15 +1,21 @@
 # Write a method, least_common_multiple, that takes in two numbers and returns
 # the smallest number that is a mutiple
 # of both of the given numbers
-def least_common_multiple(num1, num2)
-  multiple = num1
-  fact = 1
+#
+# Original Answer
+# def least_common_multiple(num1, num2)
+#   multiple = num1
+#   fact = 1
 
-  loop do
-    multiple = num1 * fact
-    fact += 1
-    return multiple if (multiple % num2).zero?
-  end
+#   loop do
+#     multiple = num1 * fact
+#     fact += 1
+#     return multiple if (multiple % num2).zero?
+#   end
+# end
+
+def least_common_multiple(num1, num2)
+  (1..num1 * num2).each { |i| return i if (i % num1).zero? && (i % num2).zero? }
 end
 
 # Write a method, most_frequent_bigram, that takes in a string and returns the
@@ -59,14 +65,14 @@ class Array
 
   def bubble_sort(&prc)
     prc ||= Proc.new { |a, b| a <=> b }
-    sorted = true
+    sorted = false
 
-    while sorted
-      sorted = false
+    while !sorted
+      sorted = true
       (0...length - 1).each do |i|
         if prc.call(self[i], self[i + 1]) == 1
           self[i], self[i + 1] = self[i + 1], self[i]
-          sorted = true
+          sorted = false
         end
       end
     end
