@@ -11,10 +11,8 @@ def all_vowel_pairs(words)
   result = []
   words.each_index do |i|
     words.each_index do |j|
-      if vowels.all? { |ch| (words[i] + words[j]).include?(ch) }
-        if !result.include?("#{words[j]} #{words[i]}")
-          result << "#{words[i]} #{words[j]}"
-        end
+      if j > i && vowels.all? { |ch| (words[i] + words[j]).include?(ch) }
+        result << "#{words[i]} #{words[j]}"
       end
     end
   end
@@ -42,10 +40,16 @@ end
 #
 # find_bigrams("the theater is empty", ["cy", "em", "ty", "ea", "oo"])  # => ["em", "ty", "ea"]
 # find_bigrams("to the moon and back", ["ck", "oo", "ha", "at"])        # => ["ck", "oo"]
+#
+# Original Answer
+# def find_bigrams(str, bigrams)
+#   result = []
+#   bigrams.each.with_index { |el, idx| result << bigrams[idx] if str.index(el) }
+#   result
+# end
+#
 def find_bigrams(str, bigrams)
-  result = []
-  bigrams.each.with_index { |el, idx| result << bigrams[idx] if str.index(el) }
-  result
+  bigrams.select { |bigram| str.include?(bigram) }
 end
 
 class Hash
@@ -63,10 +67,19 @@ class Hash
   # hash_2 = {4=>4, 10=>11, 12=>3, 5=>6, 7=>8}
   # hash_2.my_select { |k, v| k + 1 == v }      # => {10=>11, 5=>6, 7=>8})
   # hash_2.my_select                            # => {4=>4}
+  #
+  # Original Answer
+  # def my_select(&prc)
+  #   result = {}
+  #   prc ||= Proc.new { |k, v| k == v }
+  #   each { |el| result[el[0]] = el[1] if prc.call(el) == true }
+  #   result
+  # end
+  #
   def my_select(&prc)
     result = {}
     prc ||= Proc.new { |k, v| k == v }
-    each { |el| result[el[0]] = el[1] if prc.call(el) == true }
+    each { |k, v| result[k] = v if prc.call(k, v) }
     result
   end
 end
@@ -80,25 +93,30 @@ class String
   #
   # "cats".substrings     # => ["c", "ca", "cat", "cats", "a", "at", "ats", "t", "ts", "s"]
   # "cats".substrings(2)  # => ["ca", "at", "ts"]
+  #
+  # Original Answer
+  # def substrings(length = nil)
+  #   result = []
+  #   if length.nil?
+  #     (0...self.length).each do |first|
+  #       (first...self.length).each { |last| result << self[first..last] }
+  #     end
+  #   else
+  #     while self.length > length - 1
+  #       result << slice(0..length - 1)
+  #       slice!(0, 1)
+  #     end
+  #   end
+  #   result
+  # end
+  #
   def substrings(length = nil)
     result = []
-    if length.nil?
-      (0...self.length).each do |first|
-        (first...self.length).each { |last| result << self[first..last] }
-      end
-    else
-      while self.length > length - 1
-        result << slice(0..length - 1)
-        slice!(0, 1)
-      end
+    (0...self.length).each do |first|
+      (first...self.length).each { |last| result << self[first..last] }
     end
-    result
+    length.nil? ? result : result.select { |sub| sub.length == length }
   end
-
-  p "cats".substrings # => ["c", "ca", "cat", "cats", "a", "at", "ats", "t", "ts", "s"]
-  p "cats".substrings(2) # => ["ca", "at", "ts"]
-  p "bootcamp".substrings(3)
-  p "boots".substrings(3)
 
   # Write a method, String#caesar_cipher, that takes in an a number.
   # The method should return a new string where each char of the original string is shifted
@@ -110,14 +128,11 @@ class String
   # "bootcamp".caesar_cipher(2) #=> "dqqvecor"
   # "zebra".caesar_cipher(4)    #=> "difve"
   def caesar_cipher(num)
-    alphabet = ("a".."z").to_a.join
+    alphabet = ("a".."z").to_a
     result = ""
-    each_char.with_index do |c, idx|
-      if !alphabet.index(c).nil?
-        new_idx = (alphabet.index(c) + num) % 26
-        new_letter = alphabet[new_idx]
-        result << new_letter
-      end
+    each_char do |c|
+      new_idx = (alphabet.index(c) + num) % 26
+      result << alphabet[new_idx]
     end
     result
   end
