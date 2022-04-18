@@ -11,6 +11,6 @@
 # no_consecutive_repeats?([10, 42, 3, 3, 10, 3])              # => false
 # no_consecutive_repeats?(['x'])                              # => true
 def no_consecutive_repeats?(arr)
-  (0...arr.length).each { |i| return false if arr[i] == arr[i + 1] }
+  (0...arr.length - 1).each { |i| return false if arr[i] == arr[i + 1] }
   true
 end
