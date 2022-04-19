@@ -26,4 +26,3 @@ def lucas_sequence(n)
   sequence << next_seq
   sequence
 end
-p lucas_sequence(6)
