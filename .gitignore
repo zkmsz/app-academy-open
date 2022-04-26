@@ -6,6 +6,7 @@ _scratch/
 .prettierrc
 .rubocop.yml
 *.zip
+*_solution.rb
 
 ###
 ### Ruby
