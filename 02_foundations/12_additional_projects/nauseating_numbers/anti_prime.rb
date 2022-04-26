@@ -20,13 +20,10 @@
 # p anti_prime?(1024) # false
 
 def divisors(n)
-  divisors = []
-  (1..n).each { |i| divisors << i if (n % i).zero? }
-  divisors.count
+  (1..n).count { |i| (n % i).zero? }
 end
 
 def anti_prime?(n)
-  counts = Hash.new(0)
-  (1..n).each { |i| counts[i] = divisors(i) }
-  counts[n] == counts.values.max
+  total = divisors(n)
+  (1...n).all? { |i| total > divisors(i) }
 end
