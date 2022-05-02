@@ -2,7 +2,7 @@
 
 | Start Date | End Date | Total Hours |
 | ---------- | -------- | ----------- |
-| 03/17/2022 |          | 72.5        |
+| 03/17/2022 |          | 77.25       |
 
 - Advanced Ruby `Completed`
 - Scope & References `Completed`
